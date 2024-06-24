@@ -18,6 +18,8 @@ const int h1=A0;
 const int h2=A1;
 const int h4=A2;
 const int h8=A3;
+const int h16=A4;
+
 
 
 int seconds=0;
@@ -44,6 +46,8 @@ void setup()
   pinMode(h2, OUTPUT);
   pinMode(h4, OUTPUT);   
   pinMode(h8, OUTPUT);
+  pinMode(h16, OUTPUT);
+
 }
 
 void loop()
@@ -149,6 +153,9 @@ void loop()
   int hr4=hoursb10%2;
   hoursb10=hoursb10/2;
   int hr8=hoursb10%2;
+  hoursb10=hoursb10/2;
+  int hr16=hoursb10%2;
+  
   
   if (hr1==1){
   	digitalWrite(h1, HIGH);
@@ -170,7 +177,11 @@ void loop()
   }else{
     digitalWrite(h8, LOW);
   }
- 
+  if (hr16==1){
+  	digitalWrite(h16, HIGH);
+  }else{
+    digitalWrite(h16, LOW);
+  }
   
   seconds++;
   if (seconds==60){
@@ -181,9 +192,9 @@ void loop()
   	minutes=0;
     hours++;
   }
-  if (hours==12){
+  if (hours==24){
   	hours=0;
   }
-
+  
   delay(1000); // Wait for 1000 millisecond(s)  
 }
